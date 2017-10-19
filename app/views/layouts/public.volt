@@ -1,4 +1,4 @@
-<div class="navbar">
+<div id="header" class="navbar">
     <div class="navbar-inner">
       <div class="container" style="width: auto;">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

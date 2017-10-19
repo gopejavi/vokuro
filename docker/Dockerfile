@@ -45,7 +45,4 @@ RUN composer install
 
 EXPOSE 80
 
-CMD git pull origin master
-#TODO: insert db again
-
-CMD service mysql restart && apache2ctl -D FOREGROUND
+CMD git pull origin master && service mysql restart && apache2ctl -D FOREGROUND
