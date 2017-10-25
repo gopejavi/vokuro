@@ -43,6 +43,6 @@ RUN service mysql restart && \
 
 RUN composer install
 
-EXPOSE 80
+EXPOSE 80 3306
 
 CMD git pull origin master && service mysql restart && apache2ctl -D FOREGROUND
