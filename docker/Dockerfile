@@ -36,9 +36,10 @@ WORKDIR /var/www/vokuro
 
 
 RUN service mysql restart && \
-	echo "UPDATE user SET plugin='mysql_native_password' WHERE User='root'; FLUSH PRIVILEGES" | mysql -u root mysql && \
+	echo "UPDATE user SET plugin='mysql_native_password',host='%' WHERE User='root'; FLUSH PRIVILEGES" | mysql -u root mysql && \
 	echo "CREATE DATABASE vokuro CHARSET=utf8 COLLATE=utf8_unicode_ci" | mysql -u root && \
-	cat schemas/vokuro.sql | mysql -u root vokuro
+	cat schemas/vokuro.sql | mysql -u root vokuro && \
+	sed -i "/bind-address/ s/^/# /" /etc/mysql/mariadb.conf.d/50-server.cnf
 	
 
 RUN composer install
