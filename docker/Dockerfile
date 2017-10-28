@@ -47,6 +47,6 @@ RUN	composer install
 EXPOSE	80 3306
 
 CMD	git pull origin master && \
-	cat schemas/vokuro.sql | mysql -u root vokuro && \
 	service mysql restart && \
+	cat schemas/vokuro.sql | mysql -u root vokuro && \
 	apache2ctl -D FOREGROUND
